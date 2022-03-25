@@ -68,8 +68,7 @@ int main(void)
 	//The if statement checks to see if the chosen platform uses a GPU, if not it setups the device using the CPU
 	//TODO code 2: select your device
 	err = clGetDeviceIDs(platform, CL_DEVICE_TYPE_GPU, 1, &device, NULL);
-	OR
-	err = clGetDeviceIDs(platform, CL_DEVICE_TYPE_GPU, 1, &device, NULL);
+
 
 	//------------------------------------------------------------------------
 	
@@ -160,10 +159,13 @@ int main(void)
 	//TODO code 9.1: set the number of work items, size of the work items and determine the number of work groups
 	
 
+	size_t global_size = 16; //total number of work items
+	size_t local_size = 4; //Size of each work group
+	cl_int num_groups = global_size/local_size; //number of work groups needed
 
 	
-	int argument1 = 16; //argument 1 that has to be sent to the target device
-	int argument2 = 4; //argument 2 that has to be sent to the target device
+	int argument1 = 10; //argument 1 that has to be sent to the target device
+	int argument2 = 20; //argument 2 that has to be sent to the target device
 	int output[global_size]; //output array
    
 	
